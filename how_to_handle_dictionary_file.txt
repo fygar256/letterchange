@@ -1,0 +1,38 @@
+デフォルト辞書ファイル指定のファイルネームは、プログラム中の、defaultdicの値を変えて下さい。
+辞書ファイル指定は、引数に「-d=<dictionary_filename>」を与えて下さい。その場合、<dictionary_filename>は、「.」、「..」、「~」等でパスを指定しないで下さい。これらの記号は、シェルが展開するものですので。
+
+英語辞書ファイルが必要です。4種類の辞書ファイルフォーマットに対応しています。
+
+辞書ファイルフォーマット①
+パブリックドメインのejdic-hand-utf8.txtが使えます。
+基本的に行頭から英単語（英文）が始まり、タブかカンマで区切られて、行末に0x0aがあるファイルなら何でもいいです。ファイルの終わりの0x00は有っても無くても動きます。
+
+辞書ファイルフォーマット②
+「英辞郎」のテキスト辞書ファイルが使えます。
+
+辞書ファイルフォーマット③
+行頭から英単語（英文）が始まり、0x0aで終わっているテキストファイルが使えます
+
+辞書ファイルフォーマット④
+stardictの辞書ファイルから生成した　.txt　ファイルに対応しています。
+
+   (i) $ sudo apt-get install stardict で、stardictをインストールすると、
+　　　stardictが使えるようになります。
+
+   (ii) 辞書ファイルをインストールします。
+　　　ここ：http://download.huzheng.org/ から探して下さい。
+    ----------ここまでの説明は、stardictを使っている人なら、要らないでしょう--------
+
+   (iii) $ sudo apt-get install stardict-toolsで、stardict-toolsをインストールします。
+
+   (iv) /usr/share/stardict/dic/<dic_directory>/で、
+　　　<dic_name>.dict.dz を、<dic_name>.dict.gz にリネームします。
+
+   (v) gunzip <dic_name>.dict.gz で、.dictファイルを展開します。
+
+   (vi) 「$ stardict-editor」で、stardict-editorを起動し、DeCompileで、
+         <dic_name>.ifoファイルを指定して、「DeCompile」ボタンを押します。
+　　　<dictionary_name>.ifoファイルは、/usr/share/stardict/dic/<dic_directory>/
+         にあります。
+
+   (vii) これで、辞書ファイル<dict_name>.txtが出来ました。
